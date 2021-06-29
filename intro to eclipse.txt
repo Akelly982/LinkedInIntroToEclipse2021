@@ -1,0 +1,304 @@
+Linkedin Tutorial
+
+https://www.linkedin.com/learning/eclipse-essential-training-8370170/installing-and-removing-additional-software?u=79795722
+
+Intro to using eclipse for JAVA and Python
+
+-------------------------------------------------
+
+Installing Eclipse with OpenJDK Amazon Corretto
+
+Eclipse:
+https://www.eclipse.org/getting_started/
+Correntto:
+https://aws.amazon.com/corretto/
+
+
+When setting up eclipse:
+On install make sure you select
+-- Eclipse IDE for developers -----
+on the following page make sure it is set to use the amazon corretto (for me version 16) JDK / OpenJKD 
+
+
+--------------------------------------------------
+
+
+
+Changeing font size of your code
+Window
+ - preferences
+      - Search for "color and fonts" 
+(Select the type of code you are currently writting and change font size and typeFace if you want)
+
+
+
+
+Got your views and perspective all messed up?
+Window
+   - perspective
+      - reset perspective
+When doing this make sure that you are in the correct panel/view development environment. Right side of the toolbar at the top shows development environments for different types of code.
+Alternativly
+Window
+   - Show View
+	- Select the View you are looking for
+
+
+Eclipse community support / PLUGINS
+PLUGINS FOR ADDITIONAL LANGUAGES!!!!!!!!!!
+BEWARE OF ADDITIONAL LICENSING AGREEMENTS!!!!!
+Help
+ - eclipse marketplace
+Here you can find plugins for dark mode. Obviously very important.
+SWING support their Apparently cool UI comes from Swing
+PyDev - python within eclipse and this is also a plugin used later in this linkedIn Tutorial
+
+
+You can drag n drop external files into the package explorer / overview window. On doing this it lets you choose if you want to link it or create a copy of it.
+
+Additionally you could right click your project and click import.
+General
+ - file system
+
+
+
+-----------------------------------------------------------
+
+
+Specific project based settings:
+Overides settings specifc for this project.
+right click your project 
+- properties
+
+Breakpoints:
+Toggle brakepoints:
+double click next to line number
+right click for additional options
+
+Breakpoint managment:
+Breakpoint has its own perspective view or:
+Window
+ - show view
+     - other
+        - debug
+           - breakpoint view
+
+Task View:
+this is //TODO and etc..
+Window 
+ - show view
+     - tasks
+Task view manages tasks that needs to be done.
+- right click the table to add task with no specific location
+//TODO works and they show up here in the Task View and the specific location in code is shown.
+
+
+Formatting
+Window
+   -Preferences
+      - Your Coding language
+         - Code Style
+             - Formatter
+
+
+
+Settings up GIT
+Window
+  - preferences
+     - git 
+        - configuration
+user.name  aidan kelly
+user.email myEmail@email.com
+
+
+
+
+------------------------------------------------------
+
+Using eclipse for java development
+
+
+
+JUnit Testing
+This is used for Testing you code to ensure it does what it is surpose to do.
+Typically the naming convention is to rename the class with the word Test at the end.
+On creation select the methods you intend to test.
+(You may need to add the JUnit 5 Libary to your project if it does not already exist.)
+
+Use method
+ @Test
+void testAdd() {
+assertEquals(5, calculator.add(2, 3))
+}
+Above:
+assertEquals(TheValueItShouldReturn, methodReturningAValue)
+If true it passes!!!! 
+
+To test individual methods 
+right click method in test class
+ - run as / coverage as
+    - JUnit Test
+It will open a new view and run the test
+If it returns false and fails it shows a failure trace showing the data it got.
+
+
+
+
+Code Coverage 
+This allows you to see which code was used / hit during the test.
+
+If your methods branch off you can cover this by testing the method twice ensuring it passes through both directions of your code.
+
+
+----------------------------------------------------------------------------
+
+
+JavaFx (Native Desktop apps)
+ ---Mostly SETUP---
+for the tutorial we used e(fx)clipse 3.7.0
+In addition you need to download the JavaFx SDK
+Link: https://openjfx.io/
+Download and extract
+
+Install SDK into Eclipse as a userLibary
+Open Eclipse 
+Window 
+ - preferences
+    - java
+        - Build Path
+            - user libaries
+                - new
+                   - JavaFX16   (16 is the version i downloaded)
+- Click your JavaFX16 userLibary
+        - add external Jars
+        -travel to the SDK dolwnload location
+            - open and find the lib file
+              - select all .jar files inside (dont include the .exe)
+		- click ok
+This now will be added to you JavaFX16 userLibary 
+- click Apply and Close.
+
+
+
+
+
+Create a new javaFx project 
+file
+ - new
+   - other
+      - JavaFx
+         - JavaFx Project 
+
+Note: 
+On the second page you need to add libaries
+Libraries
+ - select Classpath
+    - add Libary
+       - User Libary
+          - JavaFX16  (or if different same as above SDK user libary install)
+
+
+
+######
+!!Errors on project creation this is normal.... 
+
+Missing modules
+PATH_TO_FX in the turtorial
+
+--module-path "C:\Users\Akell\Documents\javafx16\lib" --add-modules javafx.controls,javafx.fxml
+
+
+https://openjfx.io/openjfx-docs/
+- javaFX and Eclipse 
+  - scroll down and VM arguments line code is shown 
+
+
+I found this youtube tutorial helpfull as well.
+https://www.youtube.com/watch?v=N6cZcw8_XtM
+
+Note: 
+My error was that \ and or / was the wrong way "changes depending on OS"
+
+Despite not checking the check box modules.somthing kept poping up so I deleted it.
+
+With creating a javaFx project despite it not being shown on projecgt creation a JavaSDK library pops up that is not the one I installed so i remove that aswell.
+- select project
+    - properties
+      - java build path
+         - select module path javaFX SDK
+              - remove 
+                  - apply and close
+
+
+Finaly On creation of project it did not set
+application.Main as starting point instead it set it to css2SomthingFX.To fix
+right click project
+ - run as
+   - run configuration
+      - (should be first page to pop up) may be called somthing weird
+else
+	-java application
+           - name yourProjectName (if needed fix this for clarity)
+Now that where here:
+Name: yourProjectName
+project: yourProjectName
+Main class: application.Main  <- this would be set to css2SomthingFx
+            
+#####
+
+
+--------------------------------------------------------
+
+
+
+
+Intro and setup for python
+
+
+Within Eclipse Marketplace download:
+pyDev - python IDE 
+
+Go to python.org and download the latest release of python for your OS.
+https://www.python.org/downloads/windows/
+I Got Python-3.9.4 x64
+Note: When installing..
+Install went fine but it did not install global environment variables for python so the interpreter did not know where to find python data/etc.
+reinstall python using exe
+ - modify
+   - next  
+     - Add Python to environment variables
+       - install again
+
+Creating Project
+Create project
+ - pyDev
+   - pyDev Project
+Name your project, set it location and select python as project type.
+
+On the same setup screnn Then: 
+- Click Please configure an interpreter befor procdeeding
+  - choose from list
+     - your python version
+
+Note: if error finding python interpreter refer to environment variables on python install above.
+
+Then Click FINISH
+
+
+Use Python in the PyDev perspective
+
+
+---------------------------
+
+
+once you close your project opening it again once it is gone can be quite the challenge due to it may be seen as just a normal directory without the python interpreter included.
+To fix this You have to open it as if it where a new project with the same directory. To do this though you have to delete the hidden project classifier files within the folder.
+- on windows file explorer
+   - view 
+     - [x] show hidden files   (check this box)
+        - navigate to your python project dir
+        	- delete .project and __pycache__
+                   - then start the project as a new project.
+This should get your python interpreter back.
+                      
+
